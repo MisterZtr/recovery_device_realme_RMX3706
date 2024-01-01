@@ -1,16 +1,16 @@
 #!/system/bin/sh
 # This script is needed to load properties for oplus devices
 
-RMX3551=$(getprop ro.separate.soft)
-ota_asserts=RMX3551,RE5465,ossi,qssi
+RMX3706=$(getprop ro.separate.soft)
+ota_asserts=RMX3706,RMX3708,RMX3709,RE5860,ossi,qssi
 
 sleep 3
 
 # Re-set some pecific properties to avoid flashing error
 case $macedonia in
-     "5465")
+     "5860")
           resetprop ro.twrp.target.devices $ota_asserts
-          resetprop ro.product.device RMX3551
+          resetprop ro.product.device RMX3706
           ;;          
 esac
 

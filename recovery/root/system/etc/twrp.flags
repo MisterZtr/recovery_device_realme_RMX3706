@@ -13,14 +13,32 @@
 /product            ext4      /dev/block/bootdevice/by-name/product          flags=display="product"
 /odm                ext4      /dev/block/bootdevice/by-name/odm              flags=display="odm"
 
+# Images                  fstype         device                            flags
+/system_image	          emmc	         /dev/block/mapper/system          flags=display="System Image";backup=1;flashimg=1
+/system_ext_image	      emmc	         /dev/block/mapper/system_ext      flags=display="System_Ext Image";backup=1;flashimg=1
+/product_image   	      emmc	         /dev/block/mapper/product         flags=display="Product Image";backup=1;flashimg=1
+/vendor_image             emmc	         /dev/block/mapper/vendor          flags=display="Vendor Image";backup=1;flashimg=1
+/vendor_dlkm_image        emmc           /dev/block/mapper/vendor_dlkm     flags=backup=1;flashimg=1
+/odm_image                emmc           /dev/block/mapper/odm             flags=display="ODM Image";backup=1;flashimg=1
+/odm_dlkm_image           emmc           /dev/block/mapper/odm_dlkm        flags=backup=1;flashimg=1
+/my_product_image         emmc           /dev/block/mapper/my_product      flags=backup=1;flashimg=1
+/my_company_image         emmc           /dev/block/mapper/my_company      flags=backup=1;flashimg=1
+/my_carrier_image         emmc           /dev/block/mapper/my_carrier      flags=backup=1;flashimg=1
+/my_region_image          emmc           /dev/block/mapper/my_region       flags=backup=1;flashimg=1
+/my_bigball_image         emmc           /dev/block/mapper/my_bigball      flags=backup=1;flashimg=1
+/my_heytap_image          emmc           /dev/block/mapper/my_heytap       flags=backup=1;flashimg=1
+/my_stock_image           emmc           /dev/block/mapper/my_stock        flags=backup=1;flashimg=1
+/my_preload_image         emmc           /dev/block/mapper/my_preload      flags=backup=1;flashimg=1
+/my_manifest_image        emmc           /dev/block/mapper/my_manifest     flags=backup=1;flashimg=1
+/my_engineering_image     emmc           /dev/block/mapper/my_engineering  flags=backup=1;flashimg=1
+
 # Verified Boot Partitions
 /vbmeta                	emmc    /dev/block/bootdevice/by-name/vbmeta                               flags=display=vbmeta";slotselect;backup=1;flashimg=1
 /vbmeta_system         	emmc    /dev/block/bootdevice/by-name/vbmeta_system                        flags=display="vbmeta_system";slotselect;backup=1;flashimg=1
 /vbmeta_vendor         	emmc    /dev/block/bootdevice/by-name/vbmeta_vendor                        flags=display="vbmeta_vendor";slotselect;backup=1;flashimg=1
 
 # External Partition
-/usbotg                 vfat      /dev/block/sdg1    /dev/block/sdg          flags=display="USB Storage";storage;wipeingui;removable
-#/storage/usbotg           vfat      /devices/platform/soc/*.ssusb/*.dwc3/xhci-hcd.*.auto*   flags=display="USB Storage";storage;wipeingui;removable
+/usb_otg       auto  /dev/block/sda1       /dev/block/sda   /dev/block/sdd1     flags=display="USB OTG";storage;wipeingui;removable
 
 # Additional Partitions
 /apdp               emmc      /dev/block/bootdevice/by-name/apdp
@@ -43,6 +61,5 @@
 /keymaster          emmc      /dev/block/bootdevice/by-name/keymaster
 /apdp               emmc      /dev/block/bootdevice/by-name/apdp
 /devinfo            emmc      /dev/block/bootdevice/by-name/devinfo
-/opporeserve        ext4      /dev/block/bootdevice/by-name/opporeserve
 /abl                emmc      /dev/block/bootdevice/by-name/abl
 /xbl                emmc      /dev/block/bootdevice/by-name/xbl

@@ -3,9 +3,9 @@
 # SPDX-License-Identifier: Apache-2.0
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/twrp_RMX3551.mk
+    $(LOCAL_DIR)/twrp_RMX3706.mk
 
 COMMON_LUNCH_CHOICES := \
-    twrp_RMX3551-user \
-    twrp_RMX3551-userdebug \
-    twrp_RMX3551-eng
+    twrp_RMX3706-user \
+    twrp_RMX3706-userdebug \
+    twrp_RMX3706-eng

@@ -2,7 +2,7 @@
 # Copyright (C) 2023 SebaUbuntu's TWRP device tree generator
 # SPDX-License-Identifier: Apache-2.0
 
-LOCAL_PATH := device/oplus/RMX3551
+LOCAL_PATH := device/realme/RMX3706
 
 # A/B Post-Instal Config
 AB_OTA_POSTINSTALL_CONFIG += \
@@ -73,6 +73,11 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-impl-qti.recovery \
     android.hardware.boot@1.2-service
 
+# Health Hal
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.1-impl \
+    android.hardware.health@2.1-service
+
 # API/SDK Version
 PRODUCT_SHIPPING_API_LEVEL := 31
 BOARD_SHIPPING_API_LEVEL := 31
@@ -101,4 +106,4 @@ TARGET_RECOVERY_DEVICE_MODULES += strace
 RECOVERY_BINARY_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/strace
 
 # OTA Assert
-TARGET_OTA_ASSERT_DEVICE := RMX3551,RE5465,ossi,qssi
+TARGET_OTA_ASSERT_DEVICE := RMX3706,RMX3708,RMX3709,RE5860,ossi,qssi

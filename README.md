@@ -1,18 +1,17 @@
 ## Custom Recovery | Device Tree
-![Realme GT2 Explorer Master](https://fdn2.mobgsm.com/vv/pics/realme/realme-gt2-master-explorer-03.jpg)
-| Device                  | Realme GT2 Explorer Master                                      |
+![Realme GT Neo5/GT3](https://storage.comprasmartphone.com/smartphones/realme-gt3.png)
+| Device                  | Realme GT Neo5/GT3                                       |
 | ----------------------- | ---------------------------------------------------------|
 | SoC                     | Qualcomm SM8475 Snapdragon 8+ Gen 1 (4 nm)                      |      
-| CPU                     | Octa-core (1x3.20 GHz Cortex-X2 & 3x2.75 GHz Cortex-A710 & 4x2.00 GHz Cortex-A510)  |
+| CPU                     | Octa-core (1x3.00 GHz Cortex-X2 & 3x2.5 GHz Cortex-A710 & 4x1.80 GHz Cortex-A510)  |
 | GPU                     | Adreno 730                                             |
-| Internal                | 128GB 8GB RAM, 256GB 8GB RAM, 256GB 12GB RAM, UFS 3.1                 |
-| Model                   | RMX3551 |
-| Codename                | Unknow (...official codename.) |
+| Internal                | Up to 16 GB RAM and 1TB storage, UFS 3.1                 |
+| Model                   | RMX3706,RMX3708,RMX3709                                  |
 
 ### Release Notes
 * TWRP now boots, decryption is working fine but aren't tested in GSI.
 * Do not flash OTA firmware yet, it is not well-tested, could brick your device.
-* Realme GT2 Explorer Master is Virtual A/B with dedicated Recovery Partition, no need to `boot` it like other A/Bs, just `flash` it.
+* Realme GT Neo5/GT3 is Virtual A/B with dedicated Recovery Partition, no need to `boot` it like other A/Bs, just `flash` it.
 
 ### Working Features
 * Internal Storage
@@ -24,7 +23,7 @@
 * MTP
 
 ### Issues and Bugs
-* External Storage (...tester don't own OTG, can't check.)
+* External Storage
 * Flashing OTA.
 * Backup/Restore (...backup actually works, but restoring it not yet tested.)
 * Vibration/Haptics

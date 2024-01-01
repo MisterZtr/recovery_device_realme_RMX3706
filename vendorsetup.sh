@@ -2,7 +2,7 @@
   
 #!/usr/bin/env bash
 
-FDEVICE="RMX3551"
+FDEVICE="RMX3706"
 #set -o xtrace
 
 fox_get_target_device() {
@@ -27,14 +27,14 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
     export LC_ALL="C"
   
 # Maintaining Info
-    export OF_MAINTAINER="kernel-t4sk"
+    export OF_MAINTAINER="MisterZtr"
     export FOX_VERSION=$(date +%y.%m.%d)
     export FOX_BUILD_TYPE=Unofficial
   	
 # Device Info
     export FOX_ARCH=arm64
     export FOX_VARIANT="12.1"
-    export TARGET_DEVICE_ALT="RMX3551,RE5465,ossi,qssi"
+    export TARGET_DEVICE_ALT="RMX3706,RMX3708,RMX3709,RE5860,ossi,qssi"
   
 # Funtions
     export FOX_REPLACE_BUSYBOX_PS=1
@@ -71,6 +71,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
     export OF_NO_SPLASH_CHANGE=1
     export OF_FIX_DECRYPTION_ON_DATA_MEDIA=1
     export FOX_BUGGED_AOSP_ARB_WORKAROUND="1616300800"; # Sun 21 Mar 04:26:40 GMT 2021
+    export FOX_USE_SPECIFIC_MAGISK_ZIP="MagiskKitsune.zip"
 
 	# let's see what are our build VARs
 	if [ -n "$FOX_BUILD_LOG_FILE" -a -f "$FOX_BUILD_LOG_FILE" ]; then
