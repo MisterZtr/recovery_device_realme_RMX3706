@@ -8,27 +8,6 @@
 | Internal                | Up to 16 GB RAM and 1TB storage, UFS 3.1                 |
 | Model                   | RMX3706,RMX3708,RMX3709                                  |
 
-### Release Notes
-* TWRP now boots, decryption is working fine but aren't tested in GSI.
-* Do not flash OTA firmware yet, it is not well-tested, could brick your device.
-* Realme GT Neo5/GT3 is Virtual A/B with dedicated Recovery Partition, no need to `boot` it like other A/Bs, just `flash` it.
-
-### Working Features
-* Internal Storage
-* FastbootD
-* ADB Commands and Terminal
-* Flashing .zip files like magisk and recovery.
-* Flashing non-logical .img files.
-* ADB Sideload
-* MTP
-
-### Issues and Bugs
-* External Storage
-* Flashing OTA.
-* Backup/Restore (...backup actually works, but restoring it not yet tested.)
-* Vibration/Haptics
-* Battery capacity
-
 ### Credits
 
 * [Bot-cd-Crypton](https://github.com/cd-Crypton)
