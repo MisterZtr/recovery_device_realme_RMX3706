@@ -19,7 +19,7 @@ AB_OTA_POSTINSTALL_CONFIG += \
 
 # A/B OTA Partitions   
 AB_OTA_UPDATER := true
-AB_OTA_PARTITIONS ?= system system_ext product vendor vendor_dlkm vendor_boot vbmeta vbmeta_system vbemta_vendor boot dtbo odm
+AB_OTA_PARTITIONS ?= system system_ext product vendor vendor_dlkm vendor_boot vbmeta vbmeta_system vbmeta_vendor boot dtbo odm
 TARGET_ENFORCE_AB_OTA_PARTITION_LIST := true
 
 # Stock OEM OTA Cert

@@ -7,11 +7,6 @@
 /dtbo               emmc      /dev/block/bootdevice/by-name/dtbo             flags=display="dtbo";slotselect;backup=1;flashimg=1
 /modem              emmc      /dev/block/bootdevice/by-name/modem            flags=display="modem";slotselect;backup=1;flashimg=1
 /cache              ext4      /dev/block/by-name/oplusreserve2               flags=display="cache"
-/system             erofs     /dev/block/bootdevice/by-name/system           flags=display="system"
-/system_ext         erofs     /dev/block/bootdevice/by-name/system_ext       flags=display="system_ext"
-/vendor             erofs     /dev/block/bootdevice/by-name/vendor           flags=display="vendor"
-/product            ext4      /dev/block/bootdevice/by-name/product          flags=display="product"
-/odm                ext4      /dev/block/bootdevice/by-name/odm              flags=display="odm"
 
 # Images                  fstype         device                            flags
 /system_image	          emmc	         /dev/block/mapper/system          flags=display="System Image";backup=1;flashimg=1
