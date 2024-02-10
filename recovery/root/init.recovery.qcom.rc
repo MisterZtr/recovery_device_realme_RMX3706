@@ -58,3 +58,9 @@ service switch_device_props /system/bin/switch_device_props.sh
 
 on post-fs
     start boot-hal-1-2
+
+# Load ADSP firmware for PMIC
+    wait /sys/kernel/boot_adsp/boot 1
+    write /sys/kernel/boot_adsp/boot 1
+    wait /sys/class/power_supply/battery 1
+    start health-hal-2-1

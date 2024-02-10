@@ -72,6 +72,7 @@ my_manifest                                             /my_manifest           e
 my_engineering                                          /my_engineering        ext4    ro,barrier=1,discard                                 wait,slotselect,logical,first_stage_mount
 my_engineering                                          /my_engineering        erofs   ro                                                   wait,slotselect,logical,first_stage_mount
 /dev/block/by-name/oplusreserve2                        /cache                 ext4    nosuid,nodev,noatime,barrier=1,discard               wait,check,first_stage_mount
+/dev/block/bootdevice/by-name/modem                     /firmware              vfat    ro                                                   wait,slotselect
 
 # Data
 /dev/block/by-name/metadata                             /metadata              ext4    noatime,nosuid,nodev,discard,data=journal,commit=1                        wait,check,formattable,first_stage_mount

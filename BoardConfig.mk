@@ -152,7 +152,7 @@ TW_USE_TOOLBOX := true
 TW_INCLUDE_NTFS_3G := true
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone45/temp"
-TW_CUSTOM_BATTERY_PATH := "/sys/class/power_supply"
+#TW_CUSTOM_BATTERY_PATH := "/sys/class/power_supply/battery"
 TW_HAS_MTP := true
 TW_MAX_BRIGHTNESS := 4095
 TW_DEFAULT_BRIGHTNESS := 2048
@@ -182,3 +182,5 @@ TW_FRAMERATE := 144
 # Debugging Configs
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
+
+TW_LOAD_VENDOR_MODULES := "q6_pdr_dlkm.ko q6_notifier_dlkm.ko snd_event_dlkm.ko gpr_dlkm.ko oplus_chg.ko spf_core_dlkm.ko apr_dlkm.ko adsp_loader_dlkm.ko"
