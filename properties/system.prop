@@ -1,5 +1,0 @@
-# Battery Property
-ro.charger.enable_suspend=1
-
-#Simulate Storage on /data/media
-persist.fuse_sdcard=true

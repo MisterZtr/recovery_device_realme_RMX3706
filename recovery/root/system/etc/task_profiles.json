@@ -20,12 +20,6 @@
       "Controller": "cpuset",
       "File": "audio-app/cpus"
     },
-
-    {
-      "Name": "DisplayCapacityCPUs",
-      "Controller": "cpuset",
-      "File": "display/cpus"
-    },
     {
       "Name": "MemStats",
       "Controller": "memory",
@@ -208,34 +202,6 @@
         }
       ]
     },
-
-    {
-      "Name": "StuneLBackground",
-      "Actions": [
-        {
-          "Name": "JoinCgroup",
-          "Params":
-          {
-            "Controller": "schedtune",
-            "Path": "l-background"
-          }
-        }
-      ]
-    },
-    {
-      "Name": "StuneHBackground",
-      "Actions": [
-        {
-          "Name": "JoinCgroup",
-          "Params":
-          {
-            "Controller": "schedtune",
-            "Path": "h-background"
-          }
-        }
-      ]
-    },
-
     {
       "Name": "AudioAppPerformance",
       "Actions" : [
@@ -448,33 +414,6 @@
     },
 
     {
-      "Name": "CpuSetHBackground",
-      "Actions": [
-        {
-          "Name": "JoinCgroup",
-          "Params":
-            {
-              "Controller": "cpuset",
-              "Path": "h-background"
-            }
-        }
-      ]
-    },
-    {
-      "Name": "CpuSetLBackground",
-      "Actions": [
-        {
-          "Name": "JoinCgroup",
-          "Params":
-            {
-              "Controller": "cpuset",
-              "Path": "l-background"
-            }
-        }
-      ]
-    },
-
-    {
       "Name": "ServiceCapacityLow",
       "Actions": [
         {
@@ -500,7 +439,6 @@
         }
       ]
     },
-
     {
       "Name": "CameraServiceCapacity",
       "Actions": [
@@ -515,6 +453,45 @@
       ]
     },
     {
+      "Name": "CameraProcessCapacityLow",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpuset",
+            "Path": "camera-background"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "CameraProcessCapacityLower",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpuset",
+            "Path": "camera-background/background"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "CameraProcessCapacityLowest",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpuset",
+            "Path": "camera-background/limit"
+          }
+        }
+      ]
+    },
+    {
       "Name": "AudioAppCapacity",
       "Actions" : [
         {
@@ -523,46 +500,6 @@
           {
             "Controller": "cpuset",
             "Path": "audio-app"
-          }
-        }
-      ]
-    },
-    {
-      "Name": "DisplayCapacity",
-      "Actions" : [
-        {
-          "Name" : "JoinCgroup",
-          "Params" :
-          {
-            "Controller": "cpuset",
-            "Path": "display"
-          }
-        }
-      ]
-    },
-
-    {
-      "Name": "BlkIoLBackground",
-      "Actions": [
-        {
-          "Name": "JoinCgroup",
-          "Params":
-          {
-            "Controller": "blkio",
-            "Path": "l-background"
-          }
-        }
-      ]
-    },
-    {
-      "Name": "BlkIoHBackground",
-      "Actions": [
-        {
-          "Name": "JoinCgroup",
-          "Params":
-          {
-            "Controller": "blkio",
-            "Path": "h-background"
           }
         }
       ]
@@ -594,7 +531,6 @@
         }
       ]
     },
-
     {
       "Name": "LowIoPriority",
       "Actions": [
@@ -655,7 +591,7 @@
           "Name": "SetTimerSlack",
           "Params":
           {
-            "Slack": "5000000"
+            "Slack": "40000000"
           }
         }
       ]
@@ -681,7 +617,7 @@
           "Params":
           {
             "Controller": "cpuset",
-            "Path": "foreground"
+            "Path": "system-background"
           }
         }
       ]
@@ -694,7 +630,7 @@
           "Params":
           {
             "Controller": "cpuset",
-            "Path": "foreground"
+            "Path": "system-background"
           }
         }
       ]
@@ -807,12 +743,12 @@
       "Profiles": [ "ServicePerformance", "LowIoPriority", "TimerSlackNormal" ]
     },
     {
-      "Name": "SCHED_SP_RT_APP",
-      "Profiles": [ "RealtimePerformance", "MaxIoPriority", "TimerSlackNormal" ]
+      "Name": "VMCompilationPerformance",
+      "Profiles": [ "HighPerformance", "ProcessCapacityHigh", "LowIoPriority", "TimerSlackNormal" ]
     },
     {
-      "Name": "SCHED_SP_DISPLAY",
-      "Profiles": [ "HighPerformance", "HighIoPriority", "TimerSlackNormal" ]
+      "Name": "SCHED_SP_RT_APP",
+      "Profiles": [ "RealtimePerformance", "MaxIoPriority", "TimerSlackNormal" ]
     },
     {
       "Name": "CPUSET_SP_DEFAULT",
@@ -835,10 +771,6 @@
       "Profiles": [ "ServiceCapacityLow", "TimerSlackNormal" ]
     },
     {
-      "Name": "CPUSET_SP_DISPLAY",
-      "Profiles": [ "HighEnergySaving", "ProcessCapacityLow", "LowIoPriority", "TimerSlackHigh" ]
-    },
-    {
       "Name": "CPUSET_SP_RESTRICTED",
       "Profiles": [ "ServiceCapacityRestricted", "TimerSlackNormal" ]
     },
@@ -851,12 +783,16 @@
       "Profiles": [ "ServiceCapacityLow", "LowIoPriority", "HighEnergySaving" ]
     },
     {
-      "Name": "CPUSET_SP_LBACKGROUND",
-      "Profiles": [ "CpuSetLBackground", "StuneLBackground", "BlkIoLBackground"]
+      "Name": "CPUSET_SP_CAMERA_BACKGROUND",
+      "Profiles": [ "CameraProcessCapacityLow"]
     },
     {
-      "Name": "CPUSET_SP_HBACKGROUND",
-      "Profiles": [ "CpuSetHBackground", "StuneHBackground", "BlkIoHBackground"]
+      "Name": "CPUSET_SP_CAMERA_LOWER_BACKGROUND",
+      "Profiles": [ "CameraProcessCapacityLower"]
+    },
+    {
+      "Name": "CPUSET_SP_CAMERA_LIMIT_BACKGROUND",
+      "Profiles": [ "HighEnergySaving", "CameraProcessCapacityLowest", "LowIoPriority", "TimerSlackHigh" ]
     }
   ]
 }

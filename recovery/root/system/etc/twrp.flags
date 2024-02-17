@@ -1,65 +1,36 @@
-# Additional File-system Tab for TWRP
+# mount point   fstype  device                                          device2             flags
+# Logical partitions
+/system_image   emmc    /dev/block/mapper/system					    flags=slotselect
 
-# Initial Boot Process
-/boot               emmc      /dev/block/bootdevice/by-name/boot             flags=display="boot";slotselect;flashimg=1
-/recovery           emmc      /dev/block/bootdevice/by-name/recovery         flags=display="recovery";slotselect;backup=1;flashimg=1
-/vendor_boot        emmc      /dev/block/bootdevice/by-name/vendor_boot      flags=display="vendor_boot";slotselect;backup=1;flashimg=1
-/dtbo               emmc      /dev/block/bootdevice/by-name/dtbo             flags=display="dtbo";slotselect;backup=1;flashimg=1
-/cache              ext4      /dev/block/by-name/oplusreserve2               flags=display="cache"
+# Userdata/Metadata partitions
+/metadata       ext4    /dev/block/by-name/metadata                                         flags=display="Metadata"
+/storage	ext4    /data/media/0							    flags=display="Internal Storage";backup;removable;usermrf;fsflags="bind,utf8"
 
-/firmware           vfat    /dev/block/bootdevice/by-name/modem              flags=slotselect;display="Modem Firmware";fsflags=ro;wait
+# Other partitions
+/boot           emmc    /dev/block/bootdevice/by-name/boot                                  flags=slotselect
+/recovery       emmc    /dev/block/bootdevice/by-name/recovery                              flags=slotselect;display="Recovery";backup;flashimg
+/vendor_boot    emmc    /dev/block/bootdevice/by-name/vendor_boot                           flags=slotselect;display="Vendor Boot";backup;flashimg
 
-/modem              emmc    /dev/block/bootdevice/by-name/modem              flags=slotselect;backup=1;display="Modem"
-/bluetooth          emmc    /dev/block/bootdevice/by-name/bluetooth          flags=slotselect;backup=1;subpartitionof=/modem
-/dsp                emmc    /dev/block/bootdevice/by-name/dsp                flags=slotselect;backup=1;subpartitionof=/modem
+# AVB partitions
+/dtbo           emmc    /dev/block/bootdevice/by-name/dtbo                                  flags=slotselect;display="DTBO";backup;flashimg
+/vbmeta         emmc    /dev/block/bootdevice/by-name/vbmeta                                flags=slotselect;display="VBMeta";backup;flashimg
+/vbmeta_system  emmc    /dev/block/bootdevice/by-name/vbmeta_system                         flags=slotselect;display="VBMeta System";backup;flashimg
 
-# Images                  fstype         device                            flags
-/system_image	          emmc	         /dev/block/mapper/system          flags=display="System Image";backup=1;flashimg=1
-/system_ext_image	      emmc	         /dev/block/mapper/system_ext      flags=display="System_Ext Image";backup=1;flashimg=1
-/product_image   	      emmc	         /dev/block/mapper/product         flags=display="Product Image";backup=1;flashimg=1
-/vendor_image             emmc	         /dev/block/mapper/vendor          flags=display="Vendor Image";backup=1;flashimg=1
-/vendor_dlkm_image        emmc           /dev/block/mapper/vendor_dlkm     flags=backup=1;flashimg=1
-/odm_image                emmc           /dev/block/mapper/odm             flags=display="ODM Image";backup=1;flashimg=1
-/odm_dlkm_image           emmc           /dev/block/mapper/odm_dlkm        flags=backup=1;flashimg=1
-/my_product_image         emmc           /dev/block/mapper/my_product      flags=backup=1;flashimg=1
-/my_company_image         emmc           /dev/block/mapper/my_company      flags=backup=1;flashimg=1
-/my_carrier_image         emmc           /dev/block/mapper/my_carrier      flags=backup=1;flashimg=1
-/my_region_image          emmc           /dev/block/mapper/my_region       flags=backup=1;flashimg=1
-/my_bigball_image         emmc           /dev/block/mapper/my_bigball      flags=backup=1;flashimg=1
-/my_heytap_image          emmc           /dev/block/mapper/my_heytap       flags=backup=1;flashimg=1
-/my_stock_image           emmc           /dev/block/mapper/my_stock        flags=backup=1;flashimg=1
-/my_preload_image         emmc           /dev/block/mapper/my_preload      flags=backup=1;flashimg=1
-/my_manifest_image        emmc           /dev/block/mapper/my_manifest     flags=backup=1;flashimg=1
-/my_engineering_image     emmc           /dev/block/mapper/my_engineering  flags=backup=1;flashimg=1
+# Persistent Firmware & Properties
+/firmware       vfat    /dev/block/bootdevice/by-name/modem                                 flags=slotselect;display="Firmware";mounttodecrypt;fsflags="ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0"
+/persist        ext4    /dev/block/bootdevice/by-name/persist                               flags=display="Persist";
+/persist_image  emmc    /dev/block/bootdevice/by-name/persist                               flags=display="Persist";backup;flashimg
 
-# Verified Boot Partitions
-/vbmeta                	emmc    /dev/block/bootdevice/by-name/vbmeta                               flags=display=vbmeta";slotselect;backup=1;flashimg=1
-/vbmeta_system         	emmc    /dev/block/bootdevice/by-name/vbmeta_system                        flags=display="vbmeta_system";slotselect;backup=1;flashimg=1
-/vbmeta_vendor         	emmc    /dev/block/bootdevice/by-name/vbmeta_vendor                        flags=display="vbmeta_vendor";slotselect;backup=1;flashimg=1
+# Modem partitions
+/modem          emmc    /dev/block/bootdevice/by-name/modem                                 flags=slotselect;backup;flashimg;display="Modem"
+/bluetooth      emmc    /dev/block/bootdevice/by-name/bluetooth                             flags=slotselect;backup;flashimg;display="Bluetooth"
+/dsp            emmc    /dev/block/bootdevice/by-name/dsp                                   flags=slotselect;backup;flashimg;display="DSP"
 
-# External Partition
-/usb_otg       auto  /dev/block/sda1       /dev/block/sda   /dev/block/sdd1     flags=display="USB OTG";storage;wipeingui;removable
+# EFS partitions
+/efs1           emmc    /dev/block/bootdevice/by-name/modemst1                              flags=backup;display="EFS"
+/efs2           emmc    /dev/block/bootdevice/by-name/modemst2                              flags=backup;subpartitionof=/efs1
+/efsc           emmc    /dev/block/bootdevice/by-name/fsc                                   flags=backup;subpartitionof=/efs1
+/efsg           emmc    /dev/block/bootdevice/by-name/fsg                                   flags=backup;subpartitionof=/efs1
 
-# Additional Partitions
-/apdp               emmc      /dev/block/bootdevice/by-name/apdp
-/devinfo            emmc      /dev/block/bootdevice/by-name/devinfo
-/aboot              emmc      /dev/block/bootdevice/by-name/aboot
-/sbl1               emmc      /dev/block/bootdevice/by-name/sbl1
-/rpm                emmc      /dev/block/bootdevice/by-name/rpm
-/tz                 emmc      /dev/block/bootdevice/by-name/tz
-/modemst1           emmc      /dev/block/bootdevice/by-name/modem_st1    flags=display="modem_st1";backup=1;flashimg=1
-/modemst2           emmc      /dev/block/bootdevice/by-name/modem_st2    flags=display="modem_st2";backup=1;flashimg=1
-/static_nv_bk       emmc      /dev/block/bootdevice/by-name/oppostanvbk
-/oppodycnvbk        emmc      /dev/block/bootdevice/by-name/oppodycnvbk
-/splash             emmc      /dev/block/bootdevice/by-name/splash                    flags=display="splash";slotselect;flashimg=1
-/reserve4           emmc      /dev/block/bootdevice/by-name/reserve4
-/dsp                emmc      /dev/block/bootdevice/by-name/dsp
-/DRIVER             emmc      /dev/block/bootdevice/by-name/DRIVER
-/devcfg             emmc      /dev/block/bootdevice/by-name/devcfg
-/mdtp               emmc      /dev/block/bootdevice/by-name/mdtp
-/cmnlib             emmc      /dev/block/bootdevice/by-name/cmnlib
-/keymaster          emmc      /dev/block/bootdevice/by-name/keymaster
-/apdp               emmc      /dev/block/bootdevice/by-name/apdp
-/devinfo            emmc      /dev/block/bootdevice/by-name/devinfo
-/abl                emmc      /dev/block/bootdevice/by-name/abl
-/xbl                emmc      /dev/block/bootdevice/by-name/xbl
+# Removable storage
+/usb_otg        auto	/dev/block/sdg1		/dev/block/sdg        			    flags=display="USB-Storage";storage;wipeingui;removable;fsflags="utf8"

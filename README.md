@@ -12,10 +12,11 @@
 
 * [Bot-cd-Crypton](https://github.com/cd-Crypton)
 * [hoangzk9as](https://github.com/hoangzk9as)
+* [Ctapchuk](https://github.com/Ctapchuk)
+* [Kychera22](https://github.com/Kychera22)
 
 
 ```
 # Copyright (C) 2023 The Android Open Source Project
-# Copyright (C) 2023 SebaUbuntu's TWRP device tree generator
 # SPDX-License-Identifier: Apache-2.0
 ```

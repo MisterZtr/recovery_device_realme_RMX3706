@@ -2,10 +2,9 @@
     Input:
         manifest.xml
         framework_manifest.xml
-        oplus_device_framework_manifest.xml
 -->
 <manifest version="4.0" type="framework">
-    <hal format="hidl">
+    <hal format="hidl" max-level="6">
         <name>android.frameworks.displayservice</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -35,14 +34,6 @@
         </interface>
         <fqname>@1.0::ISensorManager/default</fqname>
     </hal>
-    <!-- <hal format="hidl" optional="true">
-        <name>android.hardware.usb</name>
-        <version>1.0-1</version>
-        <interface>
-            <name>IUsb</name>
-            <instance>default</instance>
-        </interface>
-     </hal> -->
     <hal format="hidl">
         <name>android.hidl.manager</name>
         <transport>hwbinder</transport>
@@ -98,34 +89,14 @@
         <version>1.0</version>
     </hal>
     <hal format="hidl">
-        <name>vendor.oplus.hardware.commondcs</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>ICommonDcsHalService</name>
-            <instance>commondcsservice</instance>
-        </interface>
-        <fqname>@1.0::ICommonDcsHalService/commondcsservice</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.oplus.hardware.orms</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IOrmsHalProxy</name>
-            <instance>ORMS_HAL_PROXY</instance>
-        </interface>
-        <fqname>@1.0::IOrmsHalProxy/ORMS_HAL_PROXY</fqname>
-    </hal>
-    <hal format="hidl">
         <name>vendor.qti.hardware.qccsyshal</name>
         <transport>hwbinder</transport>
-        <version>1.1</version>
+        <version>1.2</version>
         <interface>
             <name>IQccsyshal</name>
             <instance>qccsyshal</instance>
         </interface>
-        <fqname>@1.1::IQccsyshal/qccsyshal</fqname>
+        <fqname>@1.2::IQccsyshal/qccsyshal</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.atcmdfwd</name>
@@ -136,18 +107,6 @@
             <instance>AtCmdFwdService</instance>
         </interface>
         <fqname>@1.0::IAtCmdFwd/AtCmdFwdService</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.qti.hardware.sigma_miracast</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>Isigma_miracast</name>
-            <instance>sigmahal</instance>
-            <instance>sigmahal64</instance>
-        </interface>
-        <fqname>@1.0::Isigma_miracast/sigmahal</fqname>
-        <fqname>@1.0::Isigma_miracast/sigmahal64</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.systemhelper</name>
@@ -164,20 +123,12 @@
         <fqname>@1.0::ISystemEvent/default</fqname>
         <fqname>@1.0::ISystemResource/default</fqname>
     </hal>
-    <hal format="hidl">
-        <name>vendor.qti.hardware.wifi.keystore</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IKeystoreExt</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::IKeystoreExt/default</fqname>
-    </hal>
     <system-sdk>
         <version>28</version>
         <version>29</version>
         <version>30</version>
         <version>31</version>
+        <version>32</version>
+        <version>33</version>
     </system-sdk>
 </manifest>

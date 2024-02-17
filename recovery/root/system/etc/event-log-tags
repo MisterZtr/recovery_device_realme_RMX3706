@@ -88,6 +88,7 @@
 3121 pm_package_stats (manual_time|2|3),(quota_time|2|3),(manual_data|2|2),(quota_data|2|2),(manual_cache|2|2),(quota_cache|2|2)
 3130 pm_snapshot_stats (build_count|1|1),(reuse_count|1|1),(big_builds|1|1),(short_lived|1|1),(max_build_time|1|3),(cumm_build_time|2|3)
 3131 pm_snapshot_rebuild (build_time|1|3),(lifetime|1|3)
+4100 contacts_upgrade_receiver (time|2|3)
 8000 job_deferred_execution (time|2|3)
 20003 dvm_lock_sample (process|3),(main|1|5),(thread|3),(time|1|3),(file|3),(line|1|5),(ownerfile|3),(ownerline|1|5),(sample_percent|1|6)
 20004 art_hidden_api_access (access_method|1),(flags|1),(class|3),(member|3),(type_signature|3)
@@ -194,7 +195,6 @@
 31001 wm_task_created (TaskId|1|5),(RootTaskId|1|5)
 31002 wm_task_moved (TaskId|1|5),(ToTop|1),(Index|1)
 31003 wm_task_removed (TaskId|1|5),(Reason|3)
-31004 wm_task_windowing_mode_changed (TaskId|1|5),(RootTaskId|1|5),(NewWindowingMode|1|5),(PrevWindowingMode|1|5)
 31007 wm_boot_animation_done (time|2|3)
 32000 imf_force_reconnect_ime (IME|4),(Time Since Connect|2|3),(Showing|1|1)
 33000 wp_wallpaper_crashed (component|3)
@@ -302,6 +302,7 @@
 62001 input_focus (window|3),(reason|3)
 62002 view_enqueue_input_event (eventType|3),(action|3)
 62003 input_cancel (window|3),(reason|3)
+62198 input_dispatcher
 65537 exp_det_netlink_failure (uid|1)
 70000 screen_toggled (screen_state|1|5)
 70001 intercept_power (action|3),(mPowerKeyHandled|1),(mPowerKeyPressCounter|1)
@@ -312,6 +313,11 @@
 70200 aggregation (aggregation time|2|3)
 70201 aggregation_test (field1|1|2),(field2|1|2),(field3|1|2),(field4|1|2),(field5|1|2)
 70220 gms_unknown
+70301 phone_ui_enter
+70302 phone_ui_exit
+70303 phone_ui_button_click (text|3)
+70304 phone_ui_ringer_query_elapsed
+70305 phone_ui_multiple_query
 75000 sqlite_mem_alarm_current (current|1|2)
 75001 sqlite_mem_alarm_max (max|1|2)
 75002 sqlite_mem_alarm_alloc_attempt (attempts|1|4)
@@ -516,6 +522,12 @@
 1010000 bt_hci_timeout (opcode|1)
 1010001 bt_config_source (opcode|1)
 1010002 bt_hci_unknown_type (hci_type|1)
+1990000 frame_delayed (delay|2|3)
+1990001 unacceptable_frame_delay (delay|2|3)
+1990100 memsw_state_lowmem (cur_free_memory|2|2)
+1990101 mmesw_state_lowswap (cur_free_swap|2|2)
+1990200 power_mode_change (current_cc_uAh|2|4)
+1990300 mcd_start_complete (mcd_pid|1|5)
 10195355 killinfo (Pid|1|5),(Uid|1|5),(OomAdj|1),(MinOomAdj|1),(TaskSize|1),(enum kill_reasons|1|5),(MemFree|1),(Cached|1),(SwapCached|1),(Buffers|1),(Shmem|1),(Unevictable|1),(SwapTotal|1),(SwapFree|1),(ActiveAnon|1),(InactiveAnon|1),(ActiveFile|1),(InactiveFile|1),(SReclaimable|1),(SUnreclaim|1),(KernelStack|1),(PageTables|1),(IonHeap|1),(IonHeapPool|1),(CmaFree|1),(MsSinceEvent|1),(MsSincePrevWakeup|1),(WakeupsSinceEvent|1),(SkippedWakeups|1),(TaskSwapSize|1),(GPU|1),(Thrashing|1),(MaxThrashing|1),(PsiMemSome|5),(PsiMemFull|5),(PsiIoSome|5),(PsiIoFull|5),(PsiCpuSome|5)
 1397638484 snet_event_log (subtag|3) (uid|1) (message|3)
 1937006964 stats_log (atom_id|1|5),(data|4)
